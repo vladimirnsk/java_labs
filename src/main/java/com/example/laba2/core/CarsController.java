@@ -237,11 +237,16 @@ public class CarsController implements ICarsController, ConsoleCallback, ClientC
         if (command.contains("stop_ai")) {
             presenter.stopCarsAI();
             presenter.stopTrucksAI();
+            consoleController.addMessage("Остановлено интеллектуальное поведение объектов" + "\n");
         } else if (command.contains("start_ai")) {
             presenter.startCarsAI();
             presenter.startTrucksAI();
+            consoleController.addMessage("Продолжено интеллектуальное поведение объектов" + "\n");
+        } else if (command.contains("clear")) {
+            consoleController.clearMessage();
         } else {
             consoleController.addMessage("Неизвестная команда: " + command + "\n");
+            consoleController.addMessage("Список команд:" + "\n" + "stop_ai - Остановить интеллектуальное поведение объектов" + "\n" + "start_ai - Продолжить интеллектуальное поведение объектов" + "\n");
         }
     }
 

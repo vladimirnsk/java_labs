@@ -45,4 +45,7 @@ public class ConsoleController {
         consoleTextArea.appendText(message);
         consoleTextArea.positionCaret(consoleTextArea.getText().length());
     }
+    public void clearMessage(){
+        consoleTextArea.clear();
+    }
 }
