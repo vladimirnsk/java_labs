@@ -30,12 +30,12 @@
                               <Button fx:id="stopButton" layoutX="142.0" layoutY="440.0" mnemonicParsing="false" text="Стоп" />
                               <CheckBox fx:id="showInfoCheckBox" layoutX="14.0" layoutY="380.0" mnemonicParsing="false" text="Показать информацию" />
                               <RadioButton fx:id="hideTimeRadio" layoutX="13.0" layoutY="435.0" mnemonicParsing="false" text="Спрятать время" />
-                              <TextField fx:id="CarsIntervalTextField" layoutX="10.0" layoutY="39.0" prefHeight="25.0" prefWidth="168.0" promptText="Для машин" />
-                              <TextField fx:id="TrucksIntervalTextField" layoutX="9.0" layoutY="103.0" prefHeight="25.0" prefWidth="168.0" promptText="Для грузовиков" />
-                        <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Интервалы спавна:" />
+                              <TextField fx:id="CarsIntervalTextField" layoutX="150.0" layoutY="30.0" prefHeight="25.0" prefWidth="43.0" />
+                              <TextField fx:id="TrucksIntervalTextField" layoutX="150.0" layoutY="105.0" prefHeight="25.0" prefWidth="43.0" />
+                        <Text layoutX="38.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Интервалы для машинок" />
                               <RadioButton fx:id="showTimeRadio" layoutX="13.0" layoutY="411.0" mnemonicParsing="false" text="Показать время" />
-                        <TextField fx:id="carsLifeTimeTextField" layoutX="10.0" layoutY="67.0" promptText="время  жизни машин" />
-                        <TextField fx:id="trucksLifeTimeTextField" layoutX="9.0" layoutY="131.0" promptText="время жизни грузовиков" />
+                        <TextField fx:id="carsLifeTimeTextField" layoutX="150.0" layoutY="60.0" prefHeight="25.0" prefWidth="43.0" />
+                        <TextField fx:id="trucksLifeTimeTextField" layoutX="150.0" layoutY="135.0" prefHeight="25.0" prefWidth="43.0" />
                         <Button fx:id="probkiEst" layoutX="44.0" layoutY="344.0" mnemonicParsing="false" text="Текущие объекты" />
                         <CheckBox fx:id="carsStart" layoutX="11.0" layoutY="282.0" mnemonicParsing="false" text="Машинки погнали" />
                         <CheckBox fx:id="trucksStart" layoutX="11.0" layoutY="314.0" mnemonicParsing="false" text="Грузовики поехали" />

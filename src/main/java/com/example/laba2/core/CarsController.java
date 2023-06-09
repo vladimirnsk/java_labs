@@ -12,7 +12,6 @@ import com.example.laba2.enteties.CarsInGeneral;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,7 +19,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -254,7 +252,7 @@ public class CarsController implements ICarsController, ConsoleCallback, ClientC
         try {
             Properties simulationProps = new Properties();
            // simulationProps.load(getClass().getResourceAsStream("/com/example/laba2/icon.png"));
-            simulationProps.load(getClass().getResourceAsStream("/config.properties"));
+            simulationProps.load(getClass().getResourceAsStream("/com/example/laba2/config.properties"));
             if (simulationProps.isEmpty()) return;
             System.out.println(simulationProps);
             String carsIntervalTextField = simulationProps.getProperty("carsIntervalTextField");
