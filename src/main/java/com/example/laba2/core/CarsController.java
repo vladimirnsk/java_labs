@@ -251,7 +251,6 @@ public class CarsController implements ICarsController, ConsoleCallback, ClientC
     public void loadSimulationOptions() {
         try {
             Properties simulationProps = new Properties();
-           // simulationProps.load(getClass().getResourceAsStream("/com/example/laba2/icon.png"));
             simulationProps.load(getClass().getResourceAsStream("/com/example/laba2/config.properties"));
             if (simulationProps.isEmpty()) return;
             System.out.println(simulationProps);
@@ -277,7 +276,7 @@ public class CarsController implements ICarsController, ConsoleCallback, ClientC
     public void saveSimulationOptions() {
         try {
             Properties simulationProps = new Properties();
-            simulationProps.load(getClass().getResourceAsStream("/com/example/laba2/icon.png"));
+            simulationProps.load(getClass().getResourceAsStream("/com/example/laba2/config.properties"));
             System.out.println(CarsIntervalTextField);
             System.out.println(TrucksIntervalTextField);
             System.out.println(CarsProbabilitySlider);
@@ -289,7 +288,7 @@ public class CarsController implements ICarsController, ConsoleCallback, ClientC
             simulationProps.setProperty("trucksProbabilitySlider", String.valueOf(TrucksProbabilitySlider.getValue()));
             simulationProps.setProperty("CarsLifeTimeTextField", String.valueOf(carsLifeTimeTextField.getText()));
             simulationProps.setProperty("TrucksLifeTimeTextField", String.valueOf(trucksLifeTimeTextField.getText()));
-            FileWriter out = new FileWriter(getClass().getResource("/com/example/laba2/icon.png").getFile());
+            FileWriter out = new FileWriter(getClass().getResource("/com/example/laba2/config.properties").getFile());
             simulationProps.store(out, "SimulationOptions");
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -343,8 +342,6 @@ public class CarsController implements ICarsController, ConsoleCallback, ClientC
             }
         }
         continueTimer();
-        presenter.startCarsAI();
-        presenter.startTrucksAI();
     }
 
     private void startSimulation() {

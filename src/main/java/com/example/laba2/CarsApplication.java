@@ -26,6 +26,7 @@ public class CarsApplication extends Application
         Scene scene = new Scene(fxmlLoader.load(), 1100, 575);
 
         stage.setOnCloseRequest(event -> {
+            System.out.println("save");
             carsController.saveSimulationOptions();
             try {
                 Platform.exit();
