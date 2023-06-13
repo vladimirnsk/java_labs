@@ -16,11 +16,11 @@ import java.util.Objects;
 
 public class Server {
     private final ArrayList<ClientHandler> clients = new ArrayList<>();
-    private final int port = 1488;
+    private final int port = 0;
     void run() {
         try {
             ServerSocket serverSocket = new ServerSocket(port);
-            System.out.println("Сервер запущен на порту " + port);
+            System.out.println("Сервер запущен на порту " + serverSocket.getLocalPort());
 
             while (true) {
                 Socket socket = serverSocket.accept();
@@ -92,9 +92,6 @@ public class Server {
                         ClientHandler exchanged = getEventHandlerByName(p.name);
                         exchanged.sendArrayList(p.sortedCars);
                         System.out.println("send array list " + p.sortedCars.size() + " to "+ p.name);
-                        //sendTo(p.name,"get");
-                        //ArrayList<CarsInGeneral>c2=(ArrayList<CarsInGeneral>) inputStream.readObject();
-                        //sendTo(p.name,);
                     }
                     System.out.println("Получено сообщение от " + clientName + ": " + object);
                     if(object.getClass() == Request.class){

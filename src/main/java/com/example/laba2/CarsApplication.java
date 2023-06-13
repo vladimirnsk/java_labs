@@ -1,8 +1,6 @@
 package com.example.laba2;
 
 import com.example.laba2.core.CarsController;
-import com.example.laba2.core.CarsRep;
-import com.example.laba2.core.Habitat;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +13,10 @@ import java.io.IOException;
 
 public class CarsApplication extends Application
 {
+private static boolean serverTrue =true;
+
+public static void setServerTry(boolean serverTry){
+    serverTrue=serverTry;}
 
     @Override
     public void start(Stage stage) throws IOException
@@ -37,11 +39,15 @@ public class CarsApplication extends Application
         });
         scene.getRoot().requestFocus();
         stage.setResizable(false);
-        Image icon = new Image(getClass().getResourceAsStream("/com/example/laba2/icon.png"));
-        stage.getIcons().add(icon);
         stage.setTitle("AVE-AVE");
         stage.setScene(scene);
-        stage.show();
+        if(serverTrue){
+            stage.show();
+
+    }
+        else {
+        System.exit(0);
+        }
     }
 
     public static void main(String[] args)

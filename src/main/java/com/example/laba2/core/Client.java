@@ -1,23 +1,24 @@
 package com.example.laba2.core;
 
+import com.example.laba2.CarsApplication;
 import com.example.laba2.Interface.ClientCallback;
 import com.example.laba2.enteties.Cars;
 import com.example.laba2.enteties.CarsDTO;
 import com.example.laba2.enteties.CarsInGeneral;
+import com.example.laba2.server.Main;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.Scanner;
 
 public class Client {
     private String clientName = "generalGavZ";
-    private final String serverAddress = "127.0.0.1";
-    //String host = "localhost";
-    private final int serverPort = 1488;
-
+    private static String serverAddress = "127.0.0.1";
+    private static int serverPort = 8081;
+    private static Socket socket;
     private final ClientCallback clientCallback;
 
     private ObjectOutputStream outputStream;
@@ -63,6 +64,18 @@ public class Client {
 
     public void start() {
         try {
+            Scanner in = new Scanner(System.in);
+            System.out.println("Введите PORT: ");
+            int port = in.nextInt();
+            System.out.println("PORT: " + port);
+            serverPort=port;
+
+            System.out.println("Введите IP-address: ");
+            String address = in.next();
+            serverAddress=address;
+            System.out.println("IP-address: " + serverAddress);
+            in.close();
+
             Socket socket = new Socket(serverAddress, serverPort);
             System.out.println("Подключено к серверу");
 
@@ -111,7 +124,7 @@ public class Client {
             readThread.start();
 
         } catch (IOException e) {
-            //e.printStackTrace();
+            CarsApplication.setServerTry(false);
             System.out.println("Сервер недоступен");
         }
     }
@@ -134,29 +147,11 @@ public class Client {
         System.out.println("send array list "+ sortedCars.size()+" to "+ name);
     }
     public void carsExchange(String name, ArrayList<CarsDTO> sortedCars) {
-//        new Thread(() -> {
-//            try {
-//                Pair pair = new Pair(name,sortedCars);
-//                Request request = new Request(name,clientName);
-//                outputStream.reset();
-//                outputStream.writeObject(pair);
-//                //outputStream.flush();
-//                outputStream.reset();
-//                outputStream.writeObject(request);
-//                //outputStream.flush();
-//                System.out.println("send array list from " + name +" to " + sortedCars);
-//                System.out.println("send array list "+ sortedCars.size() + " to " + name);
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
-//        }).start();
         try {
                 Pair pair = new Pair(name,sortedCars);
                 Request request = new Request(name,clientName);
-                //outputStream.reset();
                 outputStream.writeObject(pair);
                 outputStream.flush();
-                //outputStream.reset();
                 outputStream.writeObject(request);
                 outputStream.flush();
                 System.out.println("send array list from " + name +" to " + sortedCars);
@@ -166,4 +161,3 @@ public class Client {
             }
     }
 }
-
